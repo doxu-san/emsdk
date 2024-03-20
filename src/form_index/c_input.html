@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compile C Code</title>
+</head>
+<body>
+    <h1>Compile C Code</h1>
+    <textarea id="code" rows="10" cols="50">#include <stdio.h>
+
+        int main() {
+            printf("Hello, World!");
+            return 0;
+        }</textarea><br>
+    <button onclick="compileCode()">Compile</button>
+    
+    <script>
+        async function compileCode() {
+            const code = document.getElementById('code').value;
+
+            // Azure Functions への POST リクエストを行う
+            const response = await fetch('/api/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code })
+            });
+
+            if (response.ok) {
+                alert('Compilation successful!');
+                // ページ遷移の処理を追加する
+            } else {
+                alert('Compilation failed.');
+            }
+        }
+    </script>
+</body>
+</html>

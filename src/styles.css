@@ -1,0 +1,174 @@
+header {
+  height: 50px;
+  padding: 20px;
+  color: aliceblue;
+  align-items: center;
+  background-color: rgb(193, 229, 245);
+}
+
+.title {
+  color:rgb(16, 72, 98);
+}
+
+ul {
+  display: flex;
+  margin-right: 10%;
+}
+
+li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+header ul{
+  margin-right: 10%;
+}
+
+a:link {
+  color: rgb(255, 255, 255);
+}
+
+a:visited {
+  color: rgb(105, 105, 105);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  margin: -20px;
+}
+
+/* Loading背景画面設定　*/
+#splash {
+  /*fixedで全面に固定*/
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background:rgb(193, 229, 245);
+    text-align:center;
+    color:#fff;
+  }
+  
+  /* Loading画像中央配置　*/
+  #splash_logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Loading アイコンの大きさ設定　*/
+  #splash_logo img {
+    width: 500px;
+  }
+  
+  /* fadeUpをするアイコンの動き */
+  .fadeUp{
+  animation-name: fadeUpAnime;
+  animation-duration:0.5s;
+  animation-fill-mode:forwards;
+  opacity: 0;
+  }
+  
+  @keyframes fadeUpAnime{
+    from {
+      opacity: 0;
+    transform: translateY(100px);
+    }
+  
+    to {
+      opacity: 1;
+    transform: translateY(0);
+    }
+  }
+
+  /*== ボタン共通設定 */
+.btn02 {
+  /*背景の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+  display: inline-block;
+  width:100%;
+  max-width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  outline: none;
+}
+
+/*ボタン内側の設定*/
+.btn02 span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgb(16, 72, 98);
+  /* 重なりを3Dで表示 */
+  transform-style: preserve-3d;
+  /* アニメーションの設定 数字が少なくなるほど早く回転 */
+  transition: 0.5s;
+}
+
+/*== くるっと回転（手前に） */
+.rotatefront {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+
+/* 回転前 */
+.rotatefront span:nth-child(1) {
+  background: rgb(193, 229, 245);
+  color: rgb(16, 72, 98);
+  transform: rotateX(0deg);/*はじめは回転なし*/
+  transform-origin: 0 50%  -25px;/* 回転する起点 */
+}
+
+/*hoverをした後の形状*/
+.rotatefront:hover span:nth-child(1) {
+  transform: rotateX(-90deg);/* X軸に-90度回転 */
+}
+
+/* 回転後 */
+.rotatefront span:nth-child(2) {
+  background: rgb(16, 72, 98);
+  color: #fff;
+  transform: rotateX(90deg);/*はじめはX軸に90度回転*/
+  transform-origin: 0 50%  -25px;/* 回転する起点 */
+}
+
+/*hoverをした後の形状*/
+.rotatefront:hover span:nth-child(2) {
+  transform: rotateX(0deg);/* X軸に0度回転 */
+}
+
+/*落ちてくやつ*/
+.fadeDown {
+  animation-name: fadeDownAnime;/*アニメーションの定義名*/
+  animation-duration:1s;/*アニメーション変化時間 ※デフォルト*/
+  animation-delay: 2s;
+  animation-fill-mode: forwards;/*アニメーションの開始と終了時の状態を指定*/
+  opacity: 1;
+}
+
+.change-time15{
+  animation-duration: 1.5s;
+}
+  
+/*アニメーションの開始から終了までを指定する*/
+@keyframes fadeDownAnime{
+  from {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  
+  to {
+      opacity: 0;
+      transform: translateY(100px);
+  }
+}
